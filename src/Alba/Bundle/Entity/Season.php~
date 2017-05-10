@@ -1,0 +1,136 @@
+<?php
+
+namespace Alba\Bundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Season
+ *
+ * @ORM\Table(name="season")
+ * @ORM\Entity(repositoryClass="Alba\Bundle\Repository\SeasonRepository")
+ */
+class Season
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /*
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="Alba\Bundle\Repository\Reservation", mappedBy="season_id"
+     *
+     * */
+    private $reservation_id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="begin_season", type="date", nullable=true)
+     */
+    private $beginSeason;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_season", type="date", nullable=true)
+     */
+    private $endSeason;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Season
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set beginSeason
+     *
+     * @param \DateTime $beginSeason
+     *
+     * @return Season
+     */
+    public function setBeginSeason($beginSeason)
+    {
+        $this->beginSeason = $beginSeason;
+
+        return $this;
+    }
+
+    /**
+     * Get beginSeason
+     *
+     * @return \DateTime
+     */
+    public function getBeginSeason()
+    {
+        return $this->beginSeason;
+    }
+
+    /**
+     * Set endSeason
+     *
+     * @param string $endSeason
+     *
+     * @return Season
+     */
+    public function setEndSeason($endSeason)
+    {
+        $this->endSeason = $endSeason;
+
+        return $this;
+    }
+
+    /**
+     * Get endSeason
+     *
+     * @return string
+     */
+    public function getEndSeason()
+    {
+        return $this->endSeason;
+    }
+}
